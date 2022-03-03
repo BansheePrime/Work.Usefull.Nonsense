@@ -1,0 +1,17 @@
+With OpenSSL ≥ 1.1.1
+
+openssl req -x509 -newkey rsa:4096 -sha256 -days 3650 -nodes \
+  -keyout example.key -out example.crt -subj "/CN=example.com" \
+  -addext "subjectAltName=DNS:example.com,DNS:www.example.net,IP:10.0.0.1"
+  
+Command creates a certificate that is
+
+- valid for the (sub)domains example.com and www.example.net (SAN),
+- also valid for the IP address 10.0.0.1 (SAN),
+- relatively strong (as of 2021) and
+- valid for 3650 days (~10 years).
+
+The following files are generated:
+
+Private key: example.key
+Certificate: example.crt
